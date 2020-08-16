@@ -10,7 +10,7 @@ import time
 
 import openpyxl
 t ='';
-vk = openpyxl.load_workbook(r'C:\Users\Chetan.K\Desktop\PTC_activity\Safa_Face_2\Code\Running_files\Safa_Primary1.xlsx')
+vk = openpyxl.load_workbook(File_path)
 sh = vk.active
 m = sh.max_row
 print(m)
@@ -97,24 +97,24 @@ for i in range(2, m+1):
                         print(i-1)
                         sh.cell(i, 4).value = "updated as primary"
                         sh.cell(i, 2).value = "successful"
-                        vk.save(r'C:\Users\Chetan.K\Desktop\PTC_activity\Safa_Face_2\Code\Running_files\Safa_Primary1.xlsx')
+                        vk.save(File_path)
                     else:
                         print(i-1)
                         sh.cell(i, 4).value = "Non CH or AT country"
                         sh.cell(i, 2).value = "unsuccessful"
-                        vk.save(r'C:\Users\Chetan.K\Desktop\PTC_activity\Safa_Face_2\Code\Running_files\Safa_Primary1.xlsx')
+                        vk.save(File_path)
                         
         except Exception as e:
             #print('Some Issue with ' + sh.cell(i, 1).value)
             #sh.cell(i, 2).value = "Unsuccessful"
-            vk.save(r"C:\Users\Chetan.K\Desktop\PTC_activity\Safa_Face_2\Code\Running_files\Safa_Primary1.xlsx")
+            vk.save(File_path)
         finally:
             driver.close()            
                     
     except Exception as e:
         print('Some Issue with internet')
         sh.cell(i, 2).value = "Unsuccessful"       
-        vk.save(r'C:\Users\Chetan.K\Desktop\PTC_activity\Safa_Face_2\Code\Running_files\Safa_Primary1.xlsx')     
+        vk.save(File_path)     
         driver.close()                
             
                         
