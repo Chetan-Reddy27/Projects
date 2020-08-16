@@ -4,13 +4,13 @@ import openpyxl
 import time
 #storing state code
 dic = {}
-vk1 = openpyxl.load_workbook(r'C:\Users\Chetan.K\Desktop\PTC_activity\US_PTC_activity\State_code_match.xlsx')
+vk1 = openpyxl.load_workbook(File_path)
 sh1 = vk1.active
 m = sh1.max_row
 for i in range(2,m+1):
     dic[sh1.cell(i, 1).value] = sh1.cell(i, 2).value
     
-vk = openpyxl.load_workbook(r'C:\Users\Chetan.K\Desktop\PTC_activity\Safa_Face_2\Code\Running_files\Safa_Secondary1.xlsx')
+vk = openpyxl.load_workbook(File_path)
 sh = vk.active
 n = sh.max_row
 print(n)
@@ -62,23 +62,23 @@ for i in range(2, n+1):
             print(i-1)
             sh.cell(i, 2).value = "successful"
             sh.cell(i, 4).value = "updated as secondary"
-            vk.save(r'C:\Users\Chetan.K\Desktop\PTC_activity\Safa_Face_2\Code\Running_files\Safa_Secondary1.xlsx')
+            vk.save(File_path)
 #            else:
 #                print('state not updated')
 #                sh.cell(i, 2).value = "unsuccessful"
 #                sh.cell(i, 4).value = "state not updated"
-#                vk.save(r'C:\Users\Chetan.K\Desktop\PTC_activity\Safa_Face_2\Code\Running_files\Safa_Secondary1.xlsx')
+#                vk.save(File_path)
             
         except Exception as e:
             print('Some Issue with ' + sh.cell(i, 1).value)
             sh.cell(i, 2).value = "Unsuccessful"
-            vk.save(r'C:\Users\Chetan.K\Desktop\PTC_activity\Safa_Face_2\Code\Running_files\Safa_Secondary1.xlsx')
+            vk.save(File_path)
             
         finally:
             driver.close()
     except Exception as e:
         print('some issue with internet')
         sh.cell(i, 2).value = "Unsuccessful"
-        vk.save(r'C:\Users\Chetan.K\Desktop\PTC_activity\Safa_Face_2\Code\Running_files\Safa_Secondary1.xlsx')
+        vk.save(File_path)
 #        driver.close()
         pass
